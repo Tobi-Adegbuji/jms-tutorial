@@ -2,6 +2,7 @@ package dev.tobiadegbuji.jmstutorial.sender;
 
 import dev.tobiadegbuji.jmstutorial.config.JmsConfig;
 import dev.tobiadegbuji.jmstutorial.domain.Message;
+import dev.tobiadegbuji.jmstutorial.utils.FakerUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.jms.core.JmsTemplate;
@@ -22,7 +23,7 @@ public class MessageSender {
 
         Message message = Message.builder()
                 .id(UUID.randomUUID())
-                .message("Hello World")
+                .message(FakerUtil.getRandomName() + " just signed up!")
                 .build();
 
         jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, message);
